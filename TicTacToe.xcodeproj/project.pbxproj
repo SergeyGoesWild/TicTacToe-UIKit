@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A6489AB2CD1A38A0019B0E9 /* CheckResultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6489AA2CD1A38A0019B0E9 /* CheckResultService.swift */; };
 		2ABA7FDB2CCBEBE40073A3AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA7FDA2CCBEBE40073A3AD /* AppDelegate.swift */; };
 		2ABA7FDD2CCBEBE40073A3AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA7FDC2CCBEBE40073A3AD /* SceneDelegate.swift */; };
 		2ABA7FDF2CCBEBE40073A3AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA7FDE2CCBEBE40073A3AD /* MainViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A6489AA2CD1A38A0019B0E9 /* CheckResultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultService.swift; sourceTree = "<group>"; };
 		2ABA7FD72CCBEBE40073A3AD /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ABA7FDA2CCBEBE40073A3AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ABA7FDC2CCBEBE40073A3AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A6489A92CD1A3720019B0E9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2A6489AA2CD1A38A0019B0E9 /* CheckResultService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2ABA7FCE2CCBEBE30073A3AD = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 			children = (
 				2ABA7FDA2CCBEBE40073A3AD /* AppDelegate.swift */,
 				2ABA7FDC2CCBEBE40073A3AD /* SceneDelegate.swift */,
+				2A6489A92CD1A3720019B0E9 /* Services */,
 				2ABA7FDE2CCBEBE40073A3AD /* MainViewController.swift */,
 				2ABA7FEE2CCBEC840073A3AD /* CellView.swift */,
 				2ABA7FE02CCBEBE40073A3AD /* Main.storyboard */,
@@ -142,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2ABA7FDF2CCBEBE40073A3AD /* MainViewController.swift in Sources */,
+				2A6489AB2CD1A38A0019B0E9 /* CheckResultService.swift in Sources */,
 				2ABA7FEF2CCBEC840073A3AD /* CellView.swift in Sources */,
 				2ABA7FDB2CCBEBE40073A3AD /* AppDelegate.swift in Sources */,
 				2ABA7FDD2CCBEBE40073A3AD /* SceneDelegate.swift in Sources */,
