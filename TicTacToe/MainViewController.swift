@@ -15,7 +15,6 @@ protocol CellDelegate: AnyObject {
 class MainViewController: UIViewController, CellDelegate {
     
     var gameData: [CellData] = []
-    
     var activePlayer = "x"
     
     override func viewDidLoad() {

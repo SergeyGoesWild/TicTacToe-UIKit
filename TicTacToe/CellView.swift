@@ -10,6 +10,7 @@ import UIKit
 
 class CellView: UIView {
     let id: Int
+    var blocked: Bool = false
     weak var delegate: CellDelegate?
     private let symbolLabel = UILabel()
 
@@ -49,9 +50,11 @@ class CellView: UIView {
     }
 
     @objc private func handleTap() {
-        print("Cell tapped!")
-        updateSymbol(delegate!.activePlayer)
-        delegate!.playerDidClick(id: id)
+        if !blocked {
+            updateSymbol(delegate!.activePlayer)
+            blocked = true
+            delegate!.playerDidClick(id: id)
+        }
     }
 
     func updateSymbol(_ symbol: String) {
