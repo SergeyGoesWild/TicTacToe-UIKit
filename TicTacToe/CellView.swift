@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class CellView: UIView {
+    weak var delegate: CellDelegate?
+    
     private let symbolLabel = UILabel()
 
     override init(frame: CGRect) {
@@ -25,7 +27,7 @@ class CellView: UIView {
         symbolLabel.textAlignment = .center
         symbolLabel.font = UIFont.systemFont(ofSize: 40)
         symbolLabel.translatesAutoresizingMaskIntoConstraints = false
-        symbolLabel.text = "o"
+        symbolLabel.text = " "
         addSubview(symbolLabel)
 
         NSLayoutConstraint.activate([
@@ -40,6 +42,8 @@ class CellView: UIView {
 
     @objc private func handleTap() {
         print("Cell tapped!")
+        updateSymbol(delegate!.activePlayer)
+        delegate!.playerDidClick()
     }
 
     func updateSymbol(_ symbol: String) {
