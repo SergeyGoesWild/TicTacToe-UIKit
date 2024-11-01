@@ -9,7 +9,7 @@ import Foundation
 
 struct CellData {
     let id: Int
-    let value: String
+    var value: String
 }
 
 final class CheckResultService {

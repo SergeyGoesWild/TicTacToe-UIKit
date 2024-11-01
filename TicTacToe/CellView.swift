@@ -51,7 +51,7 @@ class CellView: UIView {
     @objc private func handleTap() {
         print("Cell tapped!")
         updateSymbol(delegate!.activePlayer)
-        delegate!.playerDidClick()
+        delegate!.playerDidClick(id: id)
     }
 
     func updateSymbol(_ symbol: String) {
