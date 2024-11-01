@@ -46,6 +46,10 @@ class MainViewController: UIViewController, CellDelegate {
         }
     }
     
+    func changeGameData() {
+        
+    }
+    
     func setupBoard() {
         let cell1 = CellView(frame: CGRect(x: 40, y: 40, width: 100, height: 100))
         cell1.backgroundColor = .lightGray

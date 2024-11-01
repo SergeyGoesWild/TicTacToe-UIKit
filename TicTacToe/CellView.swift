@@ -9,16 +9,24 @@ import Foundation
 import UIKit
 
 class CellView: UIView {
+    let id: Int
     weak var delegate: CellDelegate?
-    
     private let symbolLabel = UILabel()
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, id: Int) {
+        self.id = id
         super.init(frame: frame)
         setupView()
     }
-
+    
+    override init(frame: CGRect) {
+        self.id = 0
+        super.init(frame: frame)
+        setupView()
+    }
+    
     required init?(coder: NSCoder) {
+        self.id = 0
         super.init(coder: coder)
         setupView()
     }

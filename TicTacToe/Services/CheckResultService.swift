@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct CellData {
+    let id: Int
+    let value: String
+}
+
 final class CheckResultService {
     
     static let shared = CheckResultService()
@@ -15,86 +20,93 @@ final class CheckResultService {
     private var globalDidWin = false
     private var localDidWin = false
     
-    func checkResult(table: [[String]]) -> Bool {
+    func checkResult(table: [CellData]) -> Bool {
         //horizontal
-        for i in 0 ... 2 {
-            for j in 0 ... 1 {
-                if table[i][j] != table[i][j+1] || table[i][j] == " " {
+        for i in stride(from: 0, through: 6, by: 3) {
+            if table[i].value == " " {
+                localDidWin = false
+                continue
+            }
+            for j in 1 ... 2 {
+                if table[i].value != table[i+j].value {
                     localDidWin = false
                     break
                 } else {
                     localDidWin = true
                 }
             }
-            
             if localDidWin {
                 globalDidWin = true
                 break
             }
         }
-        
         if globalDidWin {
             return true
         }
         
         //vertical
         for i in 0 ... 2 {
-            for j in 0 ... 1 {
-                if table[j][i] != table[j+1][i] || table[j][i] == " " {
+            if table[i].value == " " {
+                localDidWin = false
+                continue
+            }
+            for j in stride(from: 3, through: 6, by: 3) {
+                if table[i].value != table[i+j].value {
                     localDidWin = false
                     break
                 } else {
                     localDidWin = true
                 }
             }
-            
             if localDidWin {
                 globalDidWin = true
                 break
             }
         }
-        
         if globalDidWin {
             return true
         }
         
         //diagonal 01
-        for i in 0 ... 1 {
-            if table[i][i] != table[i+1][i+1] || table[i][i] == " " {
+        for i in stride(from: 0, through: 4, by: 4) {
+            if table[i].value == " " {
+                localDidWin = false
+                break
+            }
+            if table[i].value != table[i+4].value {
                 localDidWin = false
                 break
             } else {
                 localDidWin = true
             }
-            
-            
-            if localDidWin {
-                globalDidWin = true
-            }
         }
-        
+        if localDidWin {
+            globalDidWin = true
+        }
         if globalDidWin {
             return true
         }
         
         //diagonal 02
-        var x = 2
-        for i in 0 ... 1 {
-            if table[x][i] != table[x-1][i+1] || table[x][i] == " " {
+        for i in stride(from: 2, through: 4, by: 2) {
+            if table[i].value == " " {
+                localDidWin = false
+                break
+            }
+            if table[i].value != table[i+2].value {
                 localDidWin = false
                 break
             } else {
                 localDidWin = true
             }
-            x = x - 1
-            
-            if localDidWin {
-                globalDidWin = true
-            }
+        }
+        if localDidWin {
+            globalDidWin = true
         }
         if globalDidWin {
             return true
+        } else {
+            return false
         }
-        return false
     }
 }
