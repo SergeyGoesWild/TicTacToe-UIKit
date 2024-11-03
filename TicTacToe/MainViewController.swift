@@ -15,7 +15,7 @@ protocol CellDelegate: AnyObject {
 class MainViewController: UIViewController, CellDelegate {
     
     var gameData: [CellData] = []
-    var activePlayer = "x"
+    var activePlayer = "❎"
     static let didWinNotification = Notification.Name(rawValue: "didWinNotification")
     static let didRestartNotification = Notification.Name(rawValue: "didRestartNotification")
     
@@ -30,13 +30,12 @@ class MainViewController: UIViewController, CellDelegate {
             print("Game OVER")
             sendBlockingNotification()
             AlertService.shared.showAlert(withTitle: "Game Over", withText: "The winner is: \(activePlayer)", on: self, withOkTitle: "Ok", okAction: { [weak self] in
-                // TODO: TO CHECK THAT
                 guard let self = self else { return }
                 self.sendCleaningNotification()
                 self.gameData = []
                 self.setupData()
                 CheckResultService.shared.resetCheckResultService()
-                self.activePlayer = "x"
+                self.activePlayer = "❎"
             }
             )
         } else {
@@ -51,10 +50,10 @@ class MainViewController: UIViewController, CellDelegate {
     }
     
     func switchActivePlayer() {
-        if activePlayer == "x" {
-            activePlayer = "o"
+        if activePlayer == "❎" {
+            activePlayer = "🅾️"
         } else {
-            activePlayer = "x"
+            activePlayer = "❎"
         }
     }
     

@@ -56,7 +56,7 @@ class CellView: UIView {
 
     private func setupView() {
         symbolLabel.textAlignment = .center
-        symbolLabel.font = UIFont.systemFont(ofSize: 40)
+        symbolLabel.font = UIFont.systemFont(ofSize: 25)
         symbolLabel.translatesAutoresizingMaskIntoConstraints = false
         symbolLabel.text = " "
         addSubview(symbolLabel)
