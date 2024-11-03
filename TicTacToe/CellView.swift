@@ -13,11 +13,33 @@ class CellView: UIView {
     var blocked: Bool = false
     weak var delegate: CellDelegate?
     private let symbolLabel = UILabel()
-
+    
+    var gameOverObserver: NSObjectProtocol?
+    var resetObserver: NSObjectProtocol?
+    
     init(frame: CGRect, id: Int) {
         self.id = id
         super.init(frame: frame)
         setupView()
+        gameOverObserver = NotificationCenter.default
+            .addObserver(
+                forName: MainViewController.didWinNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.blocked = true
+            }
+        resetObserver = NotificationCenter.default
+            .addObserver(
+                forName: MainViewController.didRestartNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateSymbol(" ")
+                self.blocked = false
+            }
     }
     
     override init(frame: CGRect) {

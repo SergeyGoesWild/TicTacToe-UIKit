@@ -16,6 +16,8 @@ class MainViewController: UIViewController, CellDelegate {
     
     var gameData: [CellData] = []
     var activePlayer = "x"
+    static let didWinNotification = Notification.Name(rawValue: "didWinNotification")
+    static let didRestartNotification = Notification.Name(rawValue: "didRestartNotification")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +28,26 @@ class MainViewController: UIViewController, CellDelegate {
     func checkResults() {
         if CheckResultService.shared.checkResult(table: gameData) {
             print("Game OVER")
+            sendBlockingNotification()
+            AlertService.shared.showAlert(withTitle: "Game Over", withText: "The winner is: \(activePlayer)", on: self, withOkTitle: "Ok", okAction: { [weak self] in
+                // TODO: TO CHECK THAT
+                guard let self = self else { return }
+                self.sendCleaningNotification()
+                self.gameData = []
+                self.setupData()
+                CheckResultService.shared.resetCheckResultService()
+                self.activePlayer = "x"
+            }
+            )
         } else {
             print("Game goes ON")
+            switchActivePlayer()
         }
     }
     
     func playerDidClick(id: Int) {
         changeGameData(id: id)
         checkResults()
-        switchActivePlayer()
     }
     
     func switchActivePlayer() {
@@ -56,6 +69,20 @@ class MainViewController: UIViewController, CellDelegate {
         for i in 0 ... 8 {
             gameData.append(CellData(id: i, value: " "))
         }
+    }
+    
+    func sendBlockingNotification() {
+        NotificationCenter.default
+            .post(
+                name: MainViewController.didWinNotification,
+                object: nil)
+    }
+    
+    func sendCleaningNotification() {
+        NotificationCenter.default
+            .post(
+                name: MainViewController.didRestartNotification,
+                object: nil)
     }
     
     func setupBoard() {

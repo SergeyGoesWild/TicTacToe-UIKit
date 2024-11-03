@@ -20,6 +20,11 @@ final class CheckResultService {
     private var globalDidWin = false
     private var localDidWin = false
     
+    func resetCheckResultService() {
+        globalDidWin = false
+        localDidWin = false
+    }
+    
     func checkResult(table: [CellData]) -> Bool {
         //horizontal
         for i in stride(from: 0, through: 6, by: 3) {
