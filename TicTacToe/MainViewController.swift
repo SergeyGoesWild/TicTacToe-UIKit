@@ -91,7 +91,9 @@ class MainViewController: UIViewController, CellDelegate {
         for i in 0...8 {
             let cell = CellView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), id: i)
             cell.delegate = self
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00)
+            cell.layer.cornerRadius = 10
+            cell.clipsToBounds = true
             cell.widthAnchor.constraint(equalToConstant: 100).isActive = true
             cellArray.append(cell)
         }
@@ -100,7 +102,7 @@ class MainViewController: UIViewController, CellDelegate {
             stackView.axis = .horizontal
             stackView.spacing = 10
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.backgroundColor = .blue
+//            stackView.backgroundColor = .blue
             stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
             stackViewArray.append(stackView)
         }
@@ -109,7 +111,7 @@ class MainViewController: UIViewController, CellDelegate {
         globalStackView.axis = .vertical
         globalStackView.spacing = 10
         globalStackView.translatesAutoresizingMaskIntoConstraints = false
-        globalStackView.backgroundColor = .red
+//        globalStackView.backgroundColor = .red
         view.addSubview(globalStackView)
         NSLayoutConstraint.activate([
             globalStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
